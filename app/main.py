@@ -1,11 +1,11 @@
 class Car:
     def __init__(self, comfort_class: int,
                  clean_mark: int, brand: str) -> None:
-        if not comfort_class in range(1, 8):
+        if comfort_class not in range(1, 8):
             raise ValueError("Comfort class should be between 1 and 7")
         self.comfort_class = comfort_class
 
-        if not clean_mark in range(1, 11):
+        if clean_mark not in range(1, 11):
             raise ValueError("Clean mark should be between 1 and 10")
         self.clean_mark = clean_mark
         self.brand = brand
