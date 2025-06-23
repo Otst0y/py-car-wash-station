@@ -1,11 +1,13 @@
 class Car:
     def __init__(self, comfort_class: int,
                  clean_mark: int, brand: str) -> None:
-        if comfort_class in range(1, 8):
-            self.comfort_class = comfort_class
+        if not comfort_class in range(1, 8):
+            raise ValueError("Comfort class should be between 1 and 7")
+        self.comfort_class = comfort_class
 
-        if clean_mark in range(1, 11):
-            self.clean_mark = clean_mark
+        if not clean_mark in range(1, 11):
+            raise ValueError("Clean mark should be between 1 and 10")
+        self.clean_mark = clean_mark
         self.brand = brand
 
 
@@ -14,13 +16,15 @@ class CarWashStation:
                  clean_power: int, average_rating: float,
                  count_of_ratings: int) -> None:
 
-        if 1.0 <= distance_from_city_center <= 10.0:
-            self.distance_from_city_center = distance_from_city_center
+        if not 1.0 <= distance_from_city_center <= 10.0:
+            raise ValueError("Distance should be between 1 and 10")
+        self.distance_from_city_center = distance_from_city_center
 
         self.clean_power = clean_power
 
-        if 1.0 <= average_rating <= 5.0:
-            self.average_rating = average_rating
+        if not 1.0 <= average_rating <= 5.0:
+            raise ValueError("Average rating should be between 1 and 5")
+        self.average_rating = average_rating
 
         self.count_of_ratings = count_of_ratings
 
@@ -50,7 +54,7 @@ class CarWashStation:
             car.clean_mark = self.clean_power
 
     def rate_service(self, rate: int) -> None:
-        if 1.0 <= rate <= 5.0:
+        if 1 <= rate <= 5:
             new_count_of_ratings = self.count_of_ratings + 1
             new_average_rating = (
                 self.average_rating * self.count_of_ratings
